@@ -1,5 +1,6 @@
 #include <iostream>
 #include <vector>
+#include "../utils/utils.cpp"
 using namespace std;
 
 // print 1 to n using recursion
@@ -60,3 +61,32 @@ void reverseArr(int *arr,int n, int l, int r){
     swap(arr[l],arr[r]);
     reverseArr(arr,n,l+1,r-1);
 }
+
+// return all subsequeces of string -- Coding Ninjas
+
+// get all subsequeces of array -- striver
+void getSubsequencesArr(vector<int> arr,int n, int curr, vector<int> ans){
+    if(curr >= n) {
+        printVector(ans);
+        return;
+    }
+    getSubsequencesArr(arr,n,curr+1,ans);
+    ans.push_back(arr[curr]);
+    getSubsequencesArr(arr,n,curr+1,ans);
+}
+
+// problem to solve
+/**
+ * 1. find the subsequences with given sum k
+ * 2. find any one subsequence with given sum k
+ * 3. count the number of subsequences with given sum k
+ */
+
+// SDE sheet problems
+/**
+ * 1. leetcode 39: combination sum
+ * 2. leetcode 40: combination sum II
+ * 3. GFG : subset sums
+ * 4. leetcode 90: subsets II
+ * 5. leetcode 46: permutations
+ */
