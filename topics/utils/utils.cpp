@@ -10,6 +10,17 @@ void printVector(vector<int> vec){
     cout<<endl;
 }
 
+void printVecto_2d(vector<vector<int>> vec){
+    int n=vec.size();
+    int m=vec[0].size();
+    for(int i=0;i<n;i++){
+        for(int j=0;j<m;j++){
+            cout<<vec[i][j]<<" ";
+        }
+        cout<<endl;
+    }
+}
+
 void printVector_str(vector<string> vec){
     int n= vec.size();
     for(int i=0;i<n;i++){
