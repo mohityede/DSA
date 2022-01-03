@@ -34,17 +34,17 @@ namespace nQueens{
         return true;
     }
 
-    void Nqueens(vector<vector<int>> &vec, int currCol,vector<vector<int>> &ans){
+    void solution1(vector<vector<int>> &vec, int currCol,vector<vector<int>> &ans){
         int n= vec.size();
         if(currCol>=n){
             cout<<"ans:"<<endl;
-            printVecto_2d(vec);
+            vec::print_2d(vec);
             return;
         }
         for(int row=0;row<n;row++){
             if(isSafe(vec,row,currCol)){
                 vec[row][currCol]=1;
-                Nqueens(vec,currCol+1,ans);
+                solution1(vec,currCol+1,ans);
                 vec[row][currCol]=0;
             }
         }

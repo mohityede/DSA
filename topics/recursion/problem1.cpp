@@ -67,7 +67,7 @@ void reverseArr(int *arr,int n, int l, int r){
 // get all subsequeces of array -- striver
 void getSubsequencesArr(vector<int> arr,int n, int curr, vector<int> ans){
     if(curr >= n) {
-        printVector(ans);
+        vec::print(ans);
         return;
     }
     getSubsequencesArr(arr,n,curr+1,ans);
