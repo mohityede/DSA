@@ -51,3 +51,44 @@ namespace nQueens{
     }
 
 }
+
+namespace palindromPartition{
+
+    bool isPalindrome(string S,int start, int end){
+        if(start == end) return true;
+        while(start <= end){
+            if(S[start] != S[end]) return false;
+            start++;
+            end--;
+        }
+        return true;
+    }
+
+    void getAns(string str,int curr, vector<vector<string>> &ans, vector<string> &temp){
+        int n=str.size();
+        if(curr >= n){
+            ans.push_back(temp);
+            return;
+        }
+        for(int i=curr;i<n;i++){
+            if(isPalindrome(str,curr,i)){
+                temp.push_back(str.substr(curr,i-curr+1));
+                getAns(str,curr+1,ans,temp);
+                temp.pop_back();
+            }
+        }
+    }
+
+    vector<vector<string>> palindromPartition(string str){
+        vector<vector<string>> ans;
+        vector<string> temp;
+        getAns(str,0,ans,temp);
+    }
+}
+
+
+// SDE sheet problems
+/**
+ * 1. leetcode 37: soduku solver
+ * 2. GFG : subset M-coloring problem (graph)
+ */

@@ -15,3 +15,5 @@ Repository to track my learning of Data Structure and Algorithms.
 
 #### Array
 - sometimes we may have to create long array by ourself to solve a problem.
+- try sort
+- try hashmap

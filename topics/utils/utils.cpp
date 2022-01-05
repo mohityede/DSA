@@ -2,6 +2,13 @@
 #include <vector>
 using namespace std;
 
+void fileInpOut(){
+    #ifndef ONLINE_JUDGE
+    freopen("input.txt","r",stdin);
+    freopen("output.txt","w",stdout);
+    #endif
+}
+
 namespace vec{
     void print(vector<int> vec){
         int n= vec.size();
