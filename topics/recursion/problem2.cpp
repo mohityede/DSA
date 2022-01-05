@@ -73,7 +73,7 @@ namespace palindromPartition{
         for(int i=curr;i<n;i++){
             if(isPalindrome(str,curr,i)){
                 temp.push_back(str.substr(curr,i-curr+1));
-                getAns(str,curr+1,ans,temp);
+                getAns(str,i+1,ans,temp);
                 temp.pop_back();
             }
         }
@@ -83,12 +83,67 @@ namespace palindromPartition{
         vector<vector<string>> ans;
         vector<string> temp;
         getAns(str,0,ans,temp);
+        return ans;
     }
 }
+
+namespace rateInMaze{
+
+    vector<vector<int>> visited;
+    vector<string> ans;
+    string path="";
+
+    void getAns(vector<vector<int>> &maze,int n,int row, int col){
+        if(row == n-1 && col == n-1){
+            ans.push_back(path);
+            return;
+        }
+        // left
+        if(col > 0 && visited[row][col-1] == 0 && maze[row][col-1] == 1){
+            path += "L";
+            visited[row][col]=1;
+            getAns(maze,n,row,col-1);
+            path = path.substr(0,path.size()-1);
+            visited[row][col]=0;
+        }
+        // right
+        if(col < n-1 && visited[row][col+1] == 0 && maze[row][col+1] == 1){
+            path += "R";
+            visited[row][col] = 1;
+            getAns(maze,n,row,col+1);
+            path = path.substr(0,path.size()-1);
+            visited[row][col]=0;
+        }
+        // up
+        if(row > 0 && visited[row-1][col] == 0 && maze[row-1][col] == 1){
+            path += "U";
+            visited[row][col] = 1;
+            getAns(maze,n,row-1,col);
+            path = path.substr(0,path.size()-1);
+            visited[row][col]=0;
+        }
+        //down
+        if(row < n-1 && visited[row+1][col] == 0 && maze[row+1][col] == 1){
+            path += "D";
+            visited[row][col] = 1;
+            getAns(maze,n,row+1,col);
+            path = path.substr(0,path.size()-1);
+            visited[row][col]=0;
+        }
+    }
+
+    vector<string> solution(vector<vector<int>> maze,int n){
+        visited.resize(n,vector<int>(n,0));
+        getAns(maze,n,0,0);
+        return ans;
+    }
+}
+
 
 
 // SDE sheet problems
 /**
  * 1. leetcode 37: soduku solver
  * 2. GFG : subset M-coloring problem (graph)
+ * 3. leetcode 60: kth permutation
  */
